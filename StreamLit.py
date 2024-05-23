@@ -19,14 +19,12 @@ def get_coins(cash, sale):
 
     cents = cash - sale
 
-    while(cents > 0):
-        for x in range(0,3):
-            num = math.floor(cents/types[x])
-            cents -= num * types[x]
+    for x in range(0,3):
+        num = math.floor(cents/types[x])
+        cents -= num * types[x]
 
-            numCoins[0] = num
-            totalCoins += num
-
+        numCoins[0] = num
+        totalCoins += num
 
     return totalCoins, numCoins, change
 
