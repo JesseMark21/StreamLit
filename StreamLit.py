@@ -13,7 +13,10 @@ cash_in = 6
 def get_coins(cash, sale):
     cash *= 100
     sale *= 100
-    cents = cash - sale
+
+    change = cash - sale
+
+    cents = change
     
     numQuarters = math.floor(cents/types[3])
 
@@ -35,7 +38,7 @@ def get_coins(cash, sale):
 
     totalCoins = numCents + numNickels + numDimes + numQuarters
 
-    return totalCoins, numCoins, cents
+    return totalCoins, numCoins, change
 
 
 st.write(get_coins(cash_in, total_sales))
