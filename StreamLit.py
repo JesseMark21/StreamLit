@@ -11,12 +11,13 @@ cash_in = 6
 def get_coins(cash, sale):
     numCoins = { "Quarters": 0, "Nickels": 0, "Dimes": 0, "Cents": 0 }
     totalCoins = 0
-    cents = change
+    change = cash - sale
+    
     
     cash *= 100
     sale *= 100
 
-    change = cash - sale
+    cents = cash - sale
 
     while(cents > 0):
 
