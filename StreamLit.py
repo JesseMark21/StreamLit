@@ -1,3 +1,5 @@
+import streamlit as st
+
 types = [1,5,10,25]
 d = {} # stores tuples of the form (# of types, [coin list])
 
@@ -25,3 +27,4 @@ def get_coins(cash, sale):
         return d[0]
 
 print (get_coins(cash_in, total_sales))
+st.write(get_coins(cash_in, total_sales))
