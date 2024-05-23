@@ -35,7 +35,7 @@ def get_coins(cash, sale):
 
     totalCoins = numCents + numNickels + numDimes + numQuarters
 
-    return totalCoins, numCoins
+    return totalCoins, numCoins, cents
 
 
 st.write(get_coins(cash_in, total_sales))
