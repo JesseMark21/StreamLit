@@ -1,4 +1,5 @@
 import streamlit as st
+import math
 
 types = [1,5,10,25]
 d = {} # stores tuples of the form (# of types, [coin list])
@@ -13,18 +14,28 @@ def get_coins(cash, sale):
     cash *= 100
     sale *= 100
     cents = cash - sale
-    if cents in d.keys():
-        return d[cents]
-    # elif cents > 0:
-    #     choices = [(m(cents - x)[0] + 1, m(cents - x)[1] + [x]) for x in types if cents >= x]
+    
+    numQuarters = math.floor(cents/types[3])
 
-    #     # given a list of tuples, python's min function
-    #     # uses the first element of each tuple for comparison
-    #     d[cents] = min(choices)
-    #     return d[cents]
-    else:
-        d[0] = (0, [])
-        return d[0]
+    cents -= numQuarters * types[3]
 
-print (get_coins(cash_in, total_sales))
+    if(cents > 0):
+        numDimes = math.floor(cents/types[2])
+        cents -= numDimes * types[2]
+    
+    if(cents > 0):
+        numNickels = math.floor(cents/types[1])
+        cents -= numNickels * types[1]
+
+    if(cents > 0):
+        numCents = math.floor(cents/types[0])
+        cents -= numCents * types[0]
+    
+    numCoins = [ numCents, numNickels, numDimes, numQuarters ]
+
+    totalCoins = numCents + numNickels + numDimes + numQuarters
+
+    return totalCoins, numCoins
+
+
 st.write(get_coins(cash_in, total_sales))
