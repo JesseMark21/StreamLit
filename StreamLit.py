@@ -9,7 +9,7 @@ cash_in = 6
 # finds the minimum # of types needed to
 # make change for some number of cents
 def get_coins(cash, sale):
-    numCoins = { "Quarters": 0, "Nickels": 0, "Dimes": 0, "Cents": 0 }
+    numCoins = [0, 0, 0, 0]
     totalCoins = 0
     change = cash - sale
     
@@ -20,7 +20,6 @@ def get_coins(cash, sale):
     cents = cash - sale
 
     while(cents > 0):
-
         for x in range(0,3):
             num = math.floor(cents/types[x])
             cents -= num * types[x]
